@@ -7,6 +7,7 @@ const UserList = ({users, loaded}) => {
     const userListBtnClasses = ["userList_btn"]
     const [isBtnActive, setIsBtnActive] = useState(true)
     const container = useRef()
+
     const scrollBtnHendler = () => {
         if (loaded) {
             container.current.scrollTo({top: container.current.lastElementChild.offsetTop, behavior: 'smooth'})
@@ -16,7 +17,6 @@ const UserList = ({users, loaded}) => {
 
     const activeBtnHendler = () => {
         if(loaded) {
-            console.log(container.current.scrollHeight - container.current.scrollTop)
                 setIsBtnActive(true)
             if((container.current.scrollHeight - container.current.scrollTop) <= container.current.clientHeight + 1) {
                 setIsBtnActive(false)
@@ -45,7 +45,7 @@ const UserList = ({users, loaded}) => {
             >
                 scroll to last
             </button>
-            <div ref={container} className="userList_container">
+            <div onScroll={() => activeBtnHendler()} ref={container} className="userList_container">
                 {users.map((user, index) => {
                     return <User user={user} key={index}/>
                 })}

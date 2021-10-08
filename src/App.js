@@ -22,6 +22,7 @@ const App = props => {
     const response = await axios.get(PATH_SMALLDATA, {
     })
     setUserList(response.data)
+    setIsLoaded(true)
   })
 
   const sortedUsers = useMemo(() => {
