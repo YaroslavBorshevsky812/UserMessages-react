@@ -29,7 +29,7 @@ const App = props => {
     if(selectedSort) {
       switch(selectedSort) {
         case 'по возрастанию':
-          return [...userList].sort((a, b) => b["firstName"].localeCompare(a["firstName"]))
+          return [...userList].sort((a, b) => a["timestamp"].localeCompare(b["timestamp"]))
         case 'по убыванию':
           return [...userList].sort((a, b) => b["timestamp"].localeCompare(a["timestamp"]))
       }
